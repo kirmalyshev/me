@@ -3,28 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kirill Malyshev - Career Board</title>
+    <title>Kirill Malyshev | Engineering Leader & Founder</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
     <style>
         :root {
             --pico-font-family-sans-serif: 'Inter', system-ui, -apple-system, sans-serif;
-            --pico-border-radius: 0.5rem;
+            --pico-border-radius: 0.75rem;
+            --pico-primary: #2563eb;
+        }
+
+        [data-theme="dark"] {
+            --pico-primary: #60a5fa;
         }
 
         body {
             max-width: 900px;
             margin: 0 auto;
-            padding: 2rem 1rem;
+            padding: 3rem 1.5rem;
+            line-height: 1.6;
         }
 
         header {
-            text-align: center;
-            margin-bottom: 3rem;
+            text-align: left;
+            margin-bottom: 4rem;
+            border-left: 4px solid var(--pico-primary);
+            padding-left: 1.5rem;
         }
 
         header h1 {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
             font-weight: 800;
+            letter-spacing: -0.02em;
         }
 
         header p {
@@ -35,138 +44,198 @@
 
         .links {
             display: flex;
-            justify-content: center;
             gap: 1.5rem;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            font-weight: 500;
         }
 
         .links a {
             text-decoration: none;
             color: var(--pico-primary);
+            transition: opacity 0.2s;
+        }
+
+        .links a:hover {
+            opacity: 0.7;
         }
 
         section {
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         h2 {
-            border-bottom: 1px solid var(--pico-muted-border-color);
-            padding-bottom: 0.5rem;
+            font-size: 1.75rem;
             margin-bottom: 1.5rem;
             font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .thesis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .thesis-card {
+            padding: 1.25rem;
+            background: var(--pico-card-background-color);
+            border: 1px solid var(--pico-muted-border-color);
+            border-radius: var(--pico-border-radius);
+        }
+
+        .thesis-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--pico-primary);
+        }
+
+        .thesis-card p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+            color: var(--pico-secondary);
+        }
+
+        .stat-badge {
+            background: var(--pico-primary);
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
         }
 
         table {
             width: 100%;
-            margin-bottom: 0;
+            border-collapse: collapse;
         }
 
-        table td:first-child {
-            font-weight: 600;
-            width: 30%;
+        .career-table th {
+            background: transparent;
+            border-bottom: 2px solid var(--pico-muted-border-color);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
         }
 
-        .career-table td:nth-child(1) { width: 15%; }
-        .career-table td:nth-child(2) { width: 25%; }
-        .career-table td:nth-child(3) { width: 20%; }
-        .career-table td:nth-child(4) { width: 40%; }
-
-        ul {
-            list-style-type: "– ";
-            padding-left: 1.5rem;
+        .career-table td {
+            vertical-align: top;
+            padding: 1rem 0.5rem;
         }
 
-        ul li {
-            margin-bottom: 0.5rem;
+        .company-name {
+            font-weight: 700;
+            display: block;
+        }
+
+        .company-link {
+            font-size: 0.8rem;
+            font-weight: normal;
+        }
+
+        ul.community-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul.community-list li {
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--pico-muted-border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        ul.community-list li:last-child {
+            border-bottom: none;
         }
 
         footer {
             text-align: center;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--pico-muted-color);
-            margin-top: 5rem;
+            margin-top: 6rem;
             padding-top: 2rem;
             border-top: 1px solid var(--pico-muted-border-color);
         }
 
-        /* Dark/Light mode toggle styling */
         .theme-toggle {
             position: fixed;
-            top: 1rem;
-            right: 1rem;
+            top: 1.5rem;
+            right: 1.5rem;
             cursor: pointer;
-            padding: 0.5rem;
+            padding: 0.6rem;
             border-radius: 50%;
             background: var(--pico-card-background-color);
             border: 1px solid var(--pico-muted-border-color);
             z-index: 100;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
         @media print {
-            .theme-toggle {
-                display: none;
-            }
-            body {
-                padding: 0;
-            }
-            main {
-                margin-top: 0;
-            }
-            table {
-                page-break-inside: avoid;
-            }
+            .theme-toggle { display: none; }
+            body { padding: 0; }
+            .thesis-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-        🌓
-    </button>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">🌓</button>
 
     <header>
         <h1>Kirill Malyshev</h1>
-        <p>Startup Founder · Engineering Leader · Technical Speaker</p>
+        <p>Startup Founder · Engineering Leader · Applied AI Specialist</p>
         <div class="links">
             <a href="https://www.linkedin.com/in/kirmalyshev/" target="_blank">LinkedIn</a>
             <a href="https://github.com/kirmalyshev" target="_blank">GitHub</a>
-            <span>Berlin, Germany</span>
+            <a href="mailto:kirmalyshev@fastmail.de">Email</a>
+            <span>📍 Berlin, Germany</span>
         </div>
     </header>
 
     <main>
+        <section id="philosophy">
+            <h2>Philosophy & Thesis</h2>
+            <div class="thesis-grid">
+                <div class="thesis-card">
+                    <h3>Compounding Ventures</h3>
+                    <p>6 ventures founded. I view failures not as stops, but as data points that compounded into a repeatable playbook for engineering and product execution.</p>
+                </div>
+                <div class="thesis-card">
+                    <h3>Applied AI Frontier</h3>
+                    <p>Currently focused on moving LLMs from "demo" to "production"—solving for reliability, latency, and actual business ROI in complex workflows.</p>
+                </div>
+                <div class="thesis-card">
+                    <h3>Pragmatic Leadership</h3>
+                    <p>Experience leading 20+ engineers in high-growth environments ($1B+ valuation) while maintaining a builder's mindset and technical depth.</p>
+                </div>
+            </div>
+        </section>
+
         <section id="glance">
             <h2>At a Glance</h2>
             <figure>
                 <table>
                     <tbody>
                         <tr>
-                            <td>Ventures</td>
-                            <td>6 founded — 2 operating, 4 wound down; each cycle compounded the playbook</td>
+                            <td><strong>Track Record</strong></td>
+                            <td>6 founded — 2 operating, 4 wound down; Seed raised for iClinicApp</td>
                         </tr>
                         <tr>
-                            <td>Seed funding raised</td>
-                            <td>iClinicApp — backed by Russia's largest Kaliningrad-based investment fund</td>
+                            <td><strong>Scale</strong></td>
+                            <td>300,000+ patients served; Led teams up to 20 engineers</td>
                         </tr>
                         <tr>
-                            <td>Patients served</td>
-                            <td>300,000+ via iClinicApp</td>
+                            <td><strong>Expertise</strong></td>
+                            <td>Python, Applied LLMs, Scalable SaaS, Engineering Culture</td>
                         </tr>
                         <tr>
-                            <td>Tech unicorn experience</td>
-                            <td>PandaDoc ($1B+ valuation)</td>
-                        </tr>
-                        <tr>
-                            <td>Engineering leadership</td>
-                            <td>5+ years leading teams; up to 20 engineers</td>
-                        </tr>
-                        <tr>
-                            <td>Public speaking</td>
-                            <td>Speaker at GDG (Google Developer Group) conferences</td>
-                        </tr>
-                        <tr>
-                            <td>Community built</td>
-                            <td>Python Kaliningrad — co-founded & led</td>
+                            <td><strong>Community</strong></td>
+                            <td>Co-founder of Python Kaliningrad; University Lecturer; GDG Speaker</td>
                         </tr>
                     </tbody>
                 </table>
@@ -174,7 +243,7 @@
         </section>
 
         <section id="career">
-            <h2>Career</h2>
+            <h2>Career Path</h2>
             <figure>
                 <table class="career-table">
                     <thead>
@@ -182,69 +251,105 @@
                             <th>Period</th>
                             <th>Company</th>
                             <th>Role</th>
-                            <th>Impact</th>
+                            <th>Core Impact</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>2024 – present</td>
-                            <td><strong>Cogram</strong> <em>(Berlin)</em></td>
+                            <td>2024 – Pres.</td>
+                            <td>
+                                <span class="company-name">Cogram</span>
+                                <a href="https://cogram.com" class="company-link" target="_blank">cogram.com</a>
+                            </td>
                             <td>Engineer</td>
-                            <td>Deliberate move to work at the frontier of applied LLMs in production</td>
+                            <td>Building the frontier of applied AI. Solving production LLM challenges in automated workflows.</td>
                         </tr>
                         <tr>
-                            <td>[YEAR] – [YEAR]</td>
-                            <td><strong>Makersite</strong> <em>(Berlin)</em></td>
-                            <td>Engineering Lead</td>
-                            <td>Led 12-person engineering team at VC-backed deep-tech sustainability platform</td>
+                            <td>2022 – 2024</td>
+                            <td>
+                                <span class="company-name">Makersite</span>
+                                <a href="https://makersite.io" class="company-link" target="_blank">makersite.io</a>
+                            </td>
+                            <td>Eng Lead</td>
+                            <td>Led 12-person team for a VC-backed deep-tech sustainability platform. Focused on data processing.</td>
                         </tr>
                         <tr>
-                            <td>[YEAR] – [YEAR]</td>
-                            <td><strong>PandaDoc</strong></td>
-                            <td>Engineering Lead</td>
-                            <td>Led 20-person team inside a $1B+ SaaS unicorn</td>
+                            <td>2021 – 2022</td>
+                            <td>
+                                <span class="company-name">PandaDoc</span>
+                                <a href="https://pandadoc.com" class="company-link" target="_blank">pandadoc.com</a>
+                            </td>
+                            <td>Eng Lead</td>
+                            <td>Led 20-person engineering department within a $1B+ SaaS unicorn during rapid scaling phase.</td>
                         </tr>
                         <tr>
-                            <td>[YEAR] – [YEAR]</td>
-                            <td><strong>iClinicApp</strong></td>
-                            <td>CTO & Co-founder</td>
-                            <td>Led 8-person team; raised seed from Russia's top Kaliningrad fund; 300K+ patients</td>
+                            <td>2011 – 2020</td>
+                            <td>
+                                <span class="company-name">iClinicApp</span>
+                                <a href="https://iclinicapp.com" class="company-link" target="_blank">iclinicapp.com</a>
+                            </td>
+                            <td>CTO & Founder</td>
+                            <td>Founded, raised seed funding, and scaled to 300k+ patients. Managed 8-person team.</td>
                         </tr>
                         <tr>
                             <td>2018 – 2019</td>
-                            <td><strong>Remontnik.ru</strong></td>
+                            <td>
+                                <span class="company-name">Remontnik.ru</span>
+                                <a href="https://remontnik.ru" class="company-link" target="_blank">remontnik.ru</a>
+                            </td>
                             <td>Software Engineer</td>
-                            <td>Engineering at Russia's leading home services marketplace</td>
+                            <td>Architected core features for Russia's leading home services marketplace.</td>
                         </tr>
                         <tr>
-                            <td>[YEAR] – [YEAR]</td>
-                            <td><strong>Fogstream</strong></td>
-                            <td>Engineer & Instructor</td>
-                            <td>Led 11-person team; built company-wide Python training programme</td>
+                            <td>2014 – 2018</td>
+                            <td>
+                                <span class="company-name">Fogstream</span>
+                                <a href="https://fogstream.ru" class="company-link" target="_blank">fogstream.ru</a>
+                            </td>
+                            <td>Eng Lead</td>
+                            <td>Led 11-person team. Built and executed company-wide Python training programs.</td>
                         </tr>
                     </tbody>
                 </table>
             </figure>
         </section>
 
-        <section id="education">
+        <section id="community">
             <h2>Education & Community</h2>
-            <ul>
-                <li><strong>Far Eastern State Transport University</strong> — Mathematics, Computer Science</li>
-                <li><strong>University lecturer</strong> — taught Computer Science courses</li>
-                <li><strong>Python Kaliningrad</strong> — co-founded developer community</li>
-                <li><strong>GDG speaker</strong> — presented at Google Developer Group conferences</li>
+            <ul class="community-list">
+                <li>
+                    <span><strong>Far Eastern State Transport University</strong> — Mathematics & CS</span>
+                    <span class="stat-badge">Academic</span>
+                </li>
+                <li>
+                    <span><strong>University Lecturer</strong> — Computer Science & Software Engineering</span>
+                    <span class="stat-badge">Education</span>
+                </li>
+                <li>
+                    <span><strong>Python Kaliningrad</strong> — Co-founded and led dev community</span>
+                    <span class="stat-badge">Community</span>
+                </li>
+                <li>
+                    <span><strong>GDG Speaker</strong> — Presenting at Google Developer Group events</span>
+                    <span class="stat-badge">Public Speaking</span>
+                </li>
             </ul>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Kirill Malyshev. All rights reserved.</p>
+        <p>Built for investors and collaborators. Generated from Obsidian Core DB.</p>
+        <p>&copy; 2026 Kirill Malyshev</p>
     </footer>
 
     <script>
         const toggle = document.getElementById('theme-toggle');
         const html = document.documentElement;
+        
+        // Respect system preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            html.setAttribute('data-theme', 'dark');
+        }
 
         toggle.addEventListener('click', () => {
             const currentTheme = html.getAttribute('data-theme');
