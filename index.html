@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kirill Malyshev - Career Board</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <style>
+        :root {
+            --pico-font-family-sans-serif: 'Inter', system-ui, -apple-system, sans-serif;
+            --pico-border-radius: 0.5rem;
+        }
+
+        body {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+        }
+
+        header p {
+            font-size: 1.25rem;
+            color: var(--pico-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: var(--pico-primary);
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            border-bottom: 1px solid var(--pico-muted-border-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        table {
+            width: 100%;
+            margin-bottom: 0;
+        }
+
+        table td:first-child {
+            font-weight: 600;
+            width: 30%;
+        }
+
+        .career-table td:nth-child(1) { width: 15%; }
+        .career-table td:nth-child(2) { width: 25%; }
+        .career-table td:nth-child(3) { width: 20%; }
+        .career-table td:nth-child(4) { width: 40%; }
+
+        ul {
+            list-style-type: "– ";
+            padding-left: 1.5rem;
+        }
+
+        ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--pico-muted-color);
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--pico-muted-border-color);
+        }
+
+        /* Dark/Light mode toggle styling */
+        .theme-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            background: var(--pico-card-background-color);
+            border: 1px solid var(--pico-muted-border-color);
+            z-index: 100;
+        }
+
+        @media print {
+            .theme-toggle {
+                display: none;
+            }
+            body {
+                padding: 0;
+            }
+            main {
+                margin-top: 0;
+            }
+            table {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        🌓
+    </button>
+
+    <header>
+        <h1>Kirill Malyshev</h1>
+        <p>Startup Founder · Engineering Leader · Technical Speaker</p>
+        <div class="links">
+            <a href="https://www.linkedin.com/in/kirmalyshev/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/kirmalyshev" target="_blank">GitHub</a>
+            <span>Berlin, Germany</span>
+        </div>
+    </header>
+
+    <main>
+        <section id="glance">
+            <h2>At a Glance</h2>
+            <figure>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Ventures</td>
+                            <td>6 founded — 2 operating, 4 wound down; each cycle compounded the playbook</td>
+                        </tr>
+                        <tr>
+                            <td>Seed funding raised</td>
+                            <td>iClinicApp — backed by Russia's largest Kaliningrad-based investment fund</td>
+                        </tr>
+                        <tr>
+                            <td>Patients served</td>
+                            <td>300,000+ via iClinicApp</td>
+                        </tr>
+                        <tr>
+                            <td>Tech unicorn experience</td>
+                            <td>PandaDoc ($1B+ valuation)</td>
+                        </tr>
+                        <tr>
+                            <td>Engineering leadership</td>
+                            <td>5+ years leading teams; up to 20 engineers</td>
+                        </tr>
+                        <tr>
+                            <td>Public speaking</td>
+                            <td>Speaker at GDG (Google Developer Group) conferences</td>
+                        </tr>
+                        <tr>
+                            <td>Community built</td>
+                            <td>Python Kaliningrad — co-founded & led</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </figure>
+        </section>
+
+        <section id="career">
+            <h2>Career</h2>
+            <figure>
+                <table class="career-table">
+                    <thead>
+                        <tr>
+                            <th>Period</th>
+                            <th>Company</th>
+                            <th>Role</th>
+                            <th>Impact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2024 – present</td>
+                            <td><strong>Cogram</strong> <em>(Berlin)</em></td>
+                            <td>Engineer</td>
+                            <td>Deliberate move to work at the frontier of applied LLMs in production</td>
+                        </tr>
+                        <tr>
+                            <td>[YEAR] – [YEAR]</td>
+                            <td><strong>Makersite</strong> <em>(Berlin)</em></td>
+                            <td>Engineering Lead</td>
+                            <td>Led 12-person engineering team at VC-backed deep-tech sustainability platform</td>
+                        </tr>
+                        <tr>
+                            <td>[YEAR] – [YEAR]</td>
+                            <td><strong>PandaDoc</strong></td>
+                            <td>Engineering Lead</td>
+                            <td>Led 20-person team inside a $1B+ SaaS unicorn</td>
+                        </tr>
+                        <tr>
+                            <td>[YEAR] – [YEAR]</td>
+                            <td><strong>iClinicApp</strong></td>
+                            <td>CTO & Co-founder</td>
+                            <td>Led 8-person team; raised seed from Russia's top Kaliningrad fund; 300K+ patients</td>
+                        </tr>
+                        <tr>
+                            <td>2018 – 2019</td>
+                            <td><strong>Remontnik.ru</strong></td>
+                            <td>Software Engineer</td>
+                            <td>Engineering at Russia's leading home services marketplace</td>
+                        </tr>
+                        <tr>
+                            <td>[YEAR] – [YEAR]</td>
+                            <td><strong>Fogstream</strong></td>
+                            <td>Engineer & Instructor</td>
+                            <td>Led 11-person team; built company-wide Python training programme</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </figure>
+        </section>
+
+        <section id="education">
+            <h2>Education & Community</h2>
+            <ul>
+                <li><strong>Far Eastern State Transport University</strong> — Mathematics, Computer Science</li>
+                <li><strong>University lecturer</strong> — taught Computer Science courses</li>
+                <li><strong>Python Kaliningrad</strong> — co-founded developer community</li>
+                <li><strong>GDG speaker</strong> — presented at Google Developer Group conferences</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Kirill Malyshev. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        toggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+        });
+    </script>
+</body>
+</html>
