@@ -19,7 +19,7 @@
         .links { display: flex; gap: 1.5rem; font-size: 0.9rem; font-weight: 600; }
         .links a { text-decoration: none; color: var(--pico-primary); }
         section { margin-bottom: 4rem; }
-        h2 { font-size: 1.25rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; color: var(--pico-secondary); font-weight: 700; }
+        h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1.5rem; color: var(--pico-secondary); font-weight: 700; }
         .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; }
         .stat-item { padding: 1rem; background: var(--pico-card-background-color); border: 1px solid var(--pico-muted-border-color); border-radius: var(--pico-border-radius); text-align: center; }
         .stat-value { display: block; font-size: 1.75rem; font-weight: 800; color: var(--pico-primary); }
@@ -30,8 +30,8 @@
         .career-table td { padding: 1rem 0.5rem; vertical-align: top; font-size: 0.95rem; }
         .company { font-weight: 700; }
         .role { font-size: 0.85rem; color: var(--pico-secondary); font-weight: 600; }
-        .research-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style-type: none; padding: 0; margin: 0; } .research-tags li { list-style: none; margin: 0; padding: 0; }
-        .research-tag { font-size: 0.85rem; font-weight: 600; padding: 0.3rem 0.8rem; border: 1px solid var(--pico-muted-border-color); border-radius: 2rem; background: var(--pico-muted-border-color); color: var(--pico-contrast); } .research-tags li::before { display: none !important; }
+        .focus-tags { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+        .focus-tag { font-size: 0.85rem; font-weight: 600; padding: 0.3rem 0.8rem; border: 1px solid var(--pico-muted-border-color); border-radius: 2rem; color: var(--pico-secondary); }
         .theme-toggle { position: fixed; top: 1.5rem; right: 1.5rem; cursor: pointer; padding: 0.5rem; border-radius: 50%; background: var(--pico-card-background-color); border: 1px solid var(--pico-muted-border-color); z-index: 100; opacity: 0.6; }
         .theme-toggle:hover { opacity: 1; }
     </style>
@@ -101,19 +101,19 @@
                     <tr>
                         <td>2018–19</td>
                         <td><span class="company"><a href="https://remontnik.ru" target="_blank">Remontnik</a></span><br><span class="role">Engineer</span></td>
-                        <td>Core architecture for high-traffic marketplace marketplace.</td>
+                        <td>Core architecture for high-traffic marketplace.</td>
                     </tr>
                 </tbody>
             </table>
         </section>
-        <section id="research">
+        <section id="focus">
             <h2>Current Focus</h2>
-            <ul class="research-tags">
-                <li class="research-tag">Agentic Workflows</li>
-                <li class="research-tag">Software factories</li>
-                <li class="research-tag">Self-Healing Infra</li>
-                <li class="research-tag">AI UI/UX</li>
-            </ul>
+            <div class="focus-tags">
+                <span class="focus-tag">Agentic Workflows</span>
+                <span class="focus-tag">Software factories</span>
+                <span class="focus-tag">Self-Healing Infra</span>
+                <span class="focus-tag">AI UI/UX</span>
+            </div>
         </section>
         <section id="education">
             <h2>Education</h2>
