@@ -3,183 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kirill Malyshev | Engineering Leader & Founder</title>
+    <title>Kirill Malyshev | Senior Engineering Leader & Founder</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
     <style>
         :root {
             --pico-font-family-sans-serif: 'Inter', system-ui, -apple-system, sans-serif;
             --pico-border-radius: 0.75rem;
             --pico-primary: #2563eb;
+            --pico-primary-hover: #1d4ed8;
         }
 
         [data-theme="dark"] {
             --pico-primary: #60a5fa;
+            --pico-primary-hover: #93c5fd;
         }
 
         body {
             max-width: 900px;
             margin: 0 auto;
-            padding: 3rem 1.5rem;
+            padding: 4rem 1.5rem;
             line-height: 1.6;
         }
 
         header {
             text-align: left;
-            margin-bottom: 4rem;
-            border-left: 4px solid var(--pico-primary);
-            padding-left: 1.5rem;
+            margin-bottom: 5rem;
+            border-left: 5px solid var(--pico-primary);
+            padding-left: 2rem;
         }
 
         header h1 {
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.5rem;
             font-weight: 800;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em;
+            font-size: 3rem;
         }
 
         header p {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             color: var(--pico-secondary);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
         }
 
         .links {
             display: flex;
+            flex-wrap: wrap;
             gap: 1.5rem;
-            font-size: 0.95rem;
-            font-weight: 500;
+            font-size: 1rem;
+            font-weight: 600;
         }
 
         .links a {
             text-decoration: none;
             color: var(--pico-primary);
-            transition: opacity 0.2s;
+            transition: all 0.2s;
+            border-bottom: 1px solid transparent;
         }
 
         .links a:hover {
-            opacity: 0.7;
+            border-bottom-color: var(--pico-primary);
         }
 
         section {
-            margin-bottom: 4rem;
+            margin-bottom: 5rem;
         }
 
         h2 {
-            font-size: 1.75rem;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--pico-contrast);
         }
 
         .thesis-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
         }
 
         .thesis-card {
-            padding: 1.25rem;
+            padding: 1.5rem;
             background: var(--pico-card-background-color);
             border: 1px solid var(--pico-muted-border-color);
             border-radius: var(--pico-border-radius);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .thesis-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
 
         .thesis-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
             color: var(--pico-primary);
+            font-weight: 700;
         }
 
         .thesis-card p {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             margin-bottom: 0;
             color: var(--pico-secondary);
         }
 
-        .stat-badge {
-            background: var(--pico-primary);
-            color: white;
-            padding: 0.2rem 0.5rem;
-            border-radius: 0.25rem;
-            font-size: 0.8rem;
-            font-weight: bold;
-            text-transform: uppercase;
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--pico-card-background-color);
+            border-radius: var(--pico-border-radius);
+        }
+
+        .stat-value {
+            display: block;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--pico-primary);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+            color: var(--pico-secondary);
+        }
+
+        .career-table {
+            border-radius: var(--pico-border-radius);
+            overflow: hidden;
         }
 
         .career-table th {
-            background: transparent;
-            border-bottom: 2px solid var(--pico-muted-border-color);
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--pico-secondary);
+            padding: 1rem;
         }
 
         .career-table td {
-            vertical-align: top;
-            padding: 1rem 0.5rem;
+            padding: 1.5rem 1rem;
         }
 
-        .company-name {
+        .company-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--pico-muted-border-color);
+            border-radius: 2rem;
             font-weight: 700;
-            display: block;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
         }
 
-        .company-name a {
+        .company-tag a {
             text-decoration: none;
-            color: inherit;
+            color: var(--pico-contrast);
         }
 
-        .company-name a:hover {
+        .impact-text {
+            font-size: 1rem;
+            color: var(--pico-contrast);
+        }
+
+        .research-box {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(37, 99, 235, 0) 100%);
+            padding: 2rem;
+            border-radius: var(--pico-border-radius);
+            border: 1px solid var(--pico-primary);
+        }
+
+        .research-box h3 {
+            margin-top: 0;
+            font-size: 1.25rem;
             color: var(--pico-primary);
-            text-decoration: underline;
         }
 
-        ul.community-list {
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        ul.community-list li {
-            padding: 0.75rem;
-            border-bottom: 1px solid var(--pico-muted-border-color);
+        .research-list {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0 0 0;
         }
 
-        footer {
-            text-align: center;
-            font-size: 0.85rem;
-            color: var(--pico-muted-color);
-            margin-top: 6rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--pico-muted-border-color);
+        .research-tag {
+            background: var(--pico-card-background-color);
+            border: 1px solid var(--pico-primary);
+            padding: 0.4rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-weight: 600;
         }
 
         .theme-toggle {
             position: fixed;
-            top: 1.5rem;
-            right: 1.5rem;
+            top: 2rem;
+            right: 2rem;
             cursor: pointer;
-            padding: 0.6rem;
+            padding: 0.75rem;
             border-radius: 50%;
             background: var(--pico-card-background-color);
             border: 1px solid var(--pico-muted-border-color);
             z-index: 100;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 2.25rem; }
+            header p { font-size: 1.25rem; }
         }
 
         @media print {
             .theme-toggle { display: none; }
             body { padding: 0; }
-            .thesis-grid { grid-template-columns: 1fr 1fr; }
+            .thesis-card { break-inside: avoid; }
         }
     </style>
 </head>
@@ -189,7 +237,7 @@
 
     <header>
         <h1>Kirill Malyshev</h1>
-        <p>Startup Founder · Engineering Leader · Applied AI Specialist</p>
+        <p>Founder · Engineering Leader · Applied AI Strategist</p>
         <div class="links">
             <a href="https://www.linkedin.com/in/kirmalyshev/" target="_blank">LinkedIn</a>
             <a href="https://github.com/kirmalyshev" target="_blank">GitHub</a>
@@ -199,141 +247,134 @@
     </header>
 
     <main>
-        <section id="philosophy">
-            <h2>Philosophy & Thesis</h2>
+        <section id="thesis">
+            <h2>Investment Thesis</h2>
             <div class="thesis-grid">
                 <div class="thesis-card">
-                    <h3>Compounding Ventures</h3>
-                    <p>6 ventures founded. I view failures not as stops, but as data points that compounded into a repeatable playbook for engineering and product execution.</p>
+                    <h3>Compounding Cycles</h3>
+                    <p>6 ventures founded. I treat every cycle as a data-gathering exercise, compounding institutional knowledge into a repeatable playbook for rapid engineering execution and market entry.</p>
                 </div>
                 <div class="thesis-card">
-                    <h3>Applied AI Frontier</h3>
-                    <p>Currently focused on moving LLMs from "demo" to "production"—solving for reliability, latency, and actual business ROI in complex workflows.</p>
+                    <h3>The Production Gap</h3>
+                    <p>The biggest opportunity in AI isn't the models—it's the implementation. I focus on bridging the gap between "working demo" and "enterprise-grade reliability" with production-first LLM workflows.</p>
                 </div>
                 <div class="thesis-card">
-                    <h3>Pragmatic Leadership</h3>
-                    <p>Experience leading 20+ engineers in high-growth environments ($1B+ valuation) while maintaining a builder's mindset and technical depth.</p>
+                    <h3>Operational Rigor</h3>
+                    <p>Scaling from 0 to 300k+ users as a founder, then leading departments in $1B+ unicorns. I combine a builder's obsession with the structured leadership needed for hyper-growth.</p>
                 </div>
             </div>
         </section>
 
-        <section id="glance">
-            <h2>At a Glance</h2>
-            <figure>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td><strong>Track Record</strong></td>
-                            <td>6 founded — 2 operating, 4 wound down; Seed raised for iClinicApp</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Scale</strong></td>
-                            <td>300,000+ patients served; Led teams up to 20 engineers</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Expertise</strong></td>
-                            <td>Python, Applied LLMs, Scalable SaaS, Engineering Culture</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Community</strong></td>
-                            <td>Co-founder of Python Kaliningrad; University Lecturer; GDG Speaker</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </figure>
+        <section id="stats">
+            <div class="stat-grid">
+                <div class="stat-item">
+                    <span class="stat-value">6</span>
+                    <span class="stat-label">Ventures Founded</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">300k+</span>
+                    <span class="stat-label">Patients Served</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">$1B+</span>
+                    <span class="stat-label">Market Experience</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">20+</span>
+                    <span class="stat-label">Engineers Led</span>
+                </div>
+            </div>
         </section>
 
         <section id="career">
-            <h2>Career Path</h2>
+            <h2>Track Record</h2>
             <figure>
                 <table class="career-table">
                     <thead>
                         <tr>
-                            <th>Period</th>
-                            <th>Company</th>
-                            <th>Role</th>
-                            <th>Core Impact</th>
+                            <th style="width: 20%">Period</th>
+                            <th style="width: 25%">Company</th>
+                            <th style="width: 55%">Outcome-Oriented Impact</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>2025 – Pres.</td>
                             <td>
-                                <span class="company-name"><a href="https://cogram.com" target="_blank">Cogram</a></span>
+                                <div class="company-tag"><a href="https://cogram.com" target="_blank">Cogram</a></div>
+                                <div style="font-size: 0.85rem; font-weight: 600;">Senior Engineer</div>
                             </td>
-                            <td>Senior Engineer</td>
-                            <td>Building the frontier of applied AI. Solving production LLM challenges in automated workflows.</td>
+                            <td class="impact-text">Optimizing **LLM reliability, latency, and enterprise ROI** for complex automated workflows at the frontier of applied AI.</td>
                         </tr>
                         <tr>
                             <td>2024 – 2025</td>
                             <td>
-                                <span class="company-name"><a href="https://makersite.io" target="_blank">Makersite</a></span>
+                                <div class="company-tag"><a href="https://makersite.io" target="_blank">Makersite</a></div>
+                                <div style="font-size: 0.85rem; font-weight: 600;">Engineering Lead</div>
                             </td>
-                            <td>Eng Lead</td>
-                            <td>Led 12-person team for a VC-backed deep-tech sustainability platform. Focused on data processing.</td>
+                            <td class="impact-text">Architected high-performance data processing engines for a **VC-backed sustainability platform**, enabling global supply chain transparency.</td>
                         </tr>
                         <tr>
                             <td>2019 – 2024</td>
                             <td>
-                                <span class="company-name"><a href="https://iclinicapp.ru" target="_blank">iClinicApp</a></span>
+                                <div class="company-tag"><a href="https://iclinicapp.ru" target="_blank">iClinicApp</a></div>
+                                <div style="font-size: 0.85rem; font-weight: 600;">CTO & Founder</div>
                             </td>
-                            <td>CTO & Founder</td>
-                            <td>Founded, raised seed funding, and scaled to 300k+ patients. Managed 8-person team.</td>
+                            <td class="impact-text">Founder of Kaliningrad's **first VC-backed medical platform**. Raised seed funding and scaled to **300k+ active users** with an 8-person team.</td>
                         </tr>
                         <tr>
                             <td>2021 – 2024</td>
                             <td>
-                                <span class="company-name"><a href="https://pandadoc.com" target="_blank">PandaDoc</a></span>
+                                <div class="company-tag"><a href="https://pandadoc.com" target="_blank">PandaDoc</a></div>
+                                <div style="font-size: 0.85rem; font-weight: 600;">Engineering Lead</div>
                             </td>
-                            <td>Eng Lead</td>
-                            <td>Led 20-person engineering department within a $1B+ SaaS unicorn during rapid scaling phase.</td>
+                            <td class="impact-text">Scaled engineering operations and culture for a **$1B+ SaaS leader** during a period of rapid hyper-growth. Led a 20-person department.</td>
                         </tr>
                         <tr>
                             <td>2018 – 2019</td>
                             <td>
-                                <span class="company-name"><a href="https://remontnik.ru" target="_blank">Remontnik.ru</a></span>
+                                <div class="company-tag"><a href="https://remontnik.ru" target="_blank">Remontnik.ru</a></div>
                             </td>
-                            <td>Software Engineer</td>
-                            <td>Architected core features for Russia's leading home services marketplace.</td>
-                        </tr>
-                        <tr>
-                            <td>2014 – 2018</td>
-                            <td>
-                                <span class="company-name"><a href="https://fogstream.ru" target="_blank">Fogstream</a></span>
-                            </td>
-                            <td>Eng Lead</td>
-                            <td>Led 11-person team. Built and executed company-wide Python training programs.</td>
+                            <td class="impact-text">Core architect for Russia’s leading home services marketplace, optimizing mission-critical features for massive traffic.</td>
                         </tr>
                     </tbody>
                 </table>
             </figure>
         </section>
 
+        <section id="research">
+            <div class="research-box">
+                <h3>Current Focus & Research Interests</h3>
+                <p>I'm currently exploring the intersection of deep-tech and operational efficiency. Let's talk about:</p>
+                <ul class="research-list">
+                    <li class="research-tag">Agentic Workflows</li>
+                    <li class="research-tag">Multi-modal RAG</li>
+                    <li class="research-tag">Self-Healing Infrastructure</li>
+                    <li class="research-tag">Psychology & AI UI/UX</li>
+                </ul>
+            </div>
+        </section>
+
         <section id="community">
-            <h2>Education & Community</h2>
-            <ul class="community-list">
-                <li>
-                    <span><strong>Far Eastern State Transport University</strong> — Mathematics & CS</span>
+            <h2>Education & Ecosystem</h2>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--pico-muted-border-color);">
+                    <strong>Far Eastern State Transport University</strong> — Mathematics & Computer Science
                 </li>
-                <li>
-                    <span><strong>University Lecturer</strong> — Computer Science & Software Engineering</span>
+                <li style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--pico-muted-border-color);">
+                    <strong>University Lecturer</strong> — Specialized in Computer Science & Software Engineering
                 </li>
-                <li>
-                    <span><strong>Python Kaliningrad</strong> — Co-founded and led dev community</span>
-                </li>
-                <li>
-                    <span><strong>GDG Speaker</strong> — Presenting at Google Developer Group events</span>
+                <li style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--pico-muted-border-color);">
+                    <strong>Python Kaliningrad</strong> — Co-founded and scaled the regional developer community
                 </li>
             </ul>
         </section>
     </main>
 
-
     <script>
         const toggle = document.getElementById('theme-toggle');
         const html = document.documentElement;
         
-        // Respect system preference
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
             html.setAttribute('data-theme', 'dark');
         }
